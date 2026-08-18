@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>otium. — roll for a better brain.</title>
+
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+    <header class="header">
+      <a class="logo" href="#">
+        <span class="logo-o">o</span>tium.
+      </a>
+    </header>
+
+    <main>
+      <section class="hero">
+        <p class="eyebrow">one roll. one read. your words.</p>
+
+        <h1>roll for a better brain.</h1>
+
+        <p class="description">
+          Discover one carefully selected article, read it
+          and explain what you learned out loud.
+        </p>
+
+        <button id="roll-button" type="button">
+          roll an article
+        </button>
+      </section>
+
+      <section
+        id="article"
+        class="article"
+        aria-live="polite"
+        hidden
+      ></section>
+    </main>
+
+    <script src="articles.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
