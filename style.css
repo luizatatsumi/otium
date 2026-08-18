@@ -1,10 +1,11 @@
-/* Cores principais da identidade */
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700;800&family=Instrument+Sans:wght@400;500;600;700&display=swap");
+
 
 :root {
   --ivory: #f3f0e7;
   --black: #151512;
   --electric: #f04422;
-  --line: rgba(21, 21, 18, 0.2);
+  --line: rgba(21, 21, 18, 0.18);
 }
 
 
@@ -20,27 +21,32 @@ html {
 
 body {
   margin: 0;
-  min-height: 100vh;
+
   background: var(--ivory);
   color: var(--black);
-  font-family: Arial, Helvetica, sans-serif;
+
+  font-family: "Instrument Sans", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+button,
+a {
+  font: inherit;
 }
 
 
 /* Cabeçalho */
 
 .header {
-  height: 90px;
-  padding: 0 5vw;
+  min-height: 88px;
+  padding: 20px 5vw;
 
   display: flex;
   align-items: center;
+  justify-content: space-between;
 
   border-bottom: 1px solid var(--line);
 }
-
-
-/* Logo otium. */
 
 .logo {
   display: flex;
@@ -49,8 +55,9 @@ body {
   color: var(--black);
   text-decoration: none;
 
-  font-size: 32px;
-  font-weight: 800;
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-size: 31px;
+  font-weight: 700;
   letter-spacing: -2px;
 }
 
@@ -71,62 +78,76 @@ body {
   transform: rotate(-8deg);
 }
 
+.header-note {
+  margin: 0;
+
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
 
 /* Área principal */
 
 .hero {
-  min-height: calc(100vh - 90px);
-  padding: 8vh 5vw;
+  min-height: calc(100vh - 88px);
+  padding: 7vh 5vw;
 
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns:
+    minmax(360px, 0.8fr)
+    minmax(500px, 1.2fr);
+
+  align-items: center;
+  gap: clamp(30px, 5vw, 90px);
+}
+
+
+/* Conteúdo da esquerda */
+
+.hero-copy {
+  position: relative;
+  z-index: 2;
 }
 
 .eyebrow {
-  margin: 0 0 26px;
+  margin: 0 0 24px;
 
   color: var(--electric);
 
   font-size: 12px;
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: 2px;
   text-transform: uppercase;
 }
 
-
-/* Título principal */
-
 h1 {
-  max-width: 900px;
+  max-width: 720px;
   margin: 0;
 
-  font-size: clamp(72px, 11vw, 170px);
-  font-weight: 800;
-  letter-spacing: -0.08em;
-  line-height: 0.82;
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-size: clamp(66px, 7vw, 118px);
+  font-weight: 700;
+  letter-spacing: -0.075em;
+  line-height: 0.86;
 }
 
-
-/* Texto de apresentação */
-
 .description {
-  max-width: 540px;
-  margin: 42px 0 36px;
+  max-width: 500px;
+  margin: 34px 0 34px;
 
-  font-size: 19px;
+  font-size: clamp(17px, 1.3vw, 20px);
   line-height: 1.5;
 }
 
 
-/* Botão da roleta */
+/* Botão */
 
 #roll-button {
-  width: min(100%, 390px);
-  min-height: 70px;
+  width: min(100%, 380px);
+  min-height: 68px;
 
-  padding: 0 30px;
+  padding: 0 28px;
 
   border: 0;
   border-radius: 999px;
@@ -135,7 +156,7 @@ h1 {
   color: var(--ivory);
 
   font-size: 16px;
-  font-weight: 800;
+  font-weight: 700;
   text-align: left;
 
   cursor: pointer;
@@ -156,31 +177,54 @@ h1 {
 }
 
 
-/* Espaço onde o artigo aparecerá */
+/* Logo do cão */
+
+.hero-art {
+  min-width: 0;
+  margin-left: -8%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dog-logo {
+  width: 100%;
+  max-width: 850px;
+  height: auto;
+
+  display: block;
+
+  mix-blend-mode: multiply;
+}
+
+
+/* Artigo */
 
 .article {
   width: min(90%, 900px);
   margin: 0 auto 100px;
-  padding: 40px;
+  padding: clamp(28px, 5vw, 60px);
 
   border: 1px solid var(--black);
 }
 
 .article h2 {
-  margin-top: 0;
+  margin: 0 0 28px;
 
-  font-size: clamp(34px, 5vw, 64px);
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-size: clamp(38px, 5vw, 68px);
   letter-spacing: -0.05em;
   line-height: 1;
 }
 
 .article p {
   font-size: 18px;
-  line-height: 1.7;
+  line-height: 1.75;
 }
 
 
-/* Animação que usaremos depois */
+/* Giro do primeiro o */
 
 .logo-o.is-rolling {
   animation: roll 500ms linear infinite;
@@ -197,26 +241,58 @@ h1 {
 }
 
 
-/* Ajustes para celular */
+/* Tablet */
+
+@media (max-width: 950px) {
+  .hero {
+    min-height: auto;
+
+    grid-template-columns: 1fr;
+
+    padding-top: 70px;
+  }
+
+  .hero-copy {
+    max-width: 760px;
+  }
+
+  .hero-art {
+    margin: -30px -12vw 0 -7vw;
+  }
+
+  .dog-logo {
+    max-width: 900px;
+  }
+}
+
+
+/* Celular */
 
 @media (max-width: 600px) {
   .header {
-    height: 72px;
-    padding: 0 24px;
+    min-height: 72px;
+    padding: 18px 24px;
+  }
+
+  .header-note {
+    display: none;
   }
 
   .hero {
-    min-height: calc(100vh - 72px);
-    padding: 60px 24px;
+    padding: 52px 24px 70px;
   }
 
   h1 {
-    font-size: clamp(62px, 21vw, 94px);
+    font-size: clamp(60px, 19vw, 86px);
   }
 
   .description {
-    margin-top: 34px;
+    margin-top: 30px;
     font-size: 17px;
+  }
+
+  .hero-art {
+    margin: 10px -42vw 0 -18vw;
   }
 
   .article {
