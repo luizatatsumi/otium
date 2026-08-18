@@ -1,0 +1,226 @@
+/* Cores principais da identidade */
+
+:root {
+  --ivory: #f3f0e7;
+  --black: #151512;
+  --electric: #f04422;
+  --line: rgba(21, 21, 18, 0.2);
+}
+
+
+/* Configurações gerais */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--ivory);
+  color: var(--black);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* Cabeçalho */
+
+.header {
+  height: 90px;
+  padding: 0 5vw;
+
+  display: flex;
+  align-items: center;
+
+  border-bottom: 1px solid var(--line);
+}
+
+
+/* Logo otium. */
+
+.logo {
+  display: flex;
+  align-items: center;
+
+  color: var(--black);
+  text-decoration: none;
+
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -2px;
+}
+
+.logo-o {
+  width: 27px;
+  height: 27px;
+  margin-right: 2px;
+
+  display: inline-block;
+
+  color: transparent;
+  border: 5px solid var(--black);
+
+  border-radius:
+    43% 57% 49% 51%
+    / 55% 42% 58% 45%;
+
+  transform: rotate(-8deg);
+}
+
+
+/* Área principal */
+
+.hero {
+  min-height: calc(100vh - 90px);
+  padding: 8vh 5vw;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.eyebrow {
+  margin: 0 0 26px;
+
+  color: var(--electric);
+
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+
+/* Título principal */
+
+h1 {
+  max-width: 900px;
+  margin: 0;
+
+  font-size: clamp(72px, 11vw, 170px);
+  font-weight: 800;
+  letter-spacing: -0.08em;
+  line-height: 0.82;
+}
+
+
+/* Texto de apresentação */
+
+.description {
+  max-width: 540px;
+  margin: 42px 0 36px;
+
+  font-size: 19px;
+  line-height: 1.5;
+}
+
+
+/* Botão da roleta */
+
+#roll-button {
+  width: min(100%, 390px);
+  min-height: 70px;
+
+  padding: 0 30px;
+
+  border: 0;
+  border-radius: 999px;
+
+  background: var(--electric);
+  color: var(--ivory);
+
+  font-size: 16px;
+  font-weight: 800;
+  text-align: left;
+
+  cursor: pointer;
+
+  transition:
+    transform 180ms ease,
+    background 180ms ease;
+}
+
+#roll-button:hover {
+  background: #d93619;
+  transform: translateY(-3px);
+}
+
+#roll-button:focus-visible {
+  outline: 3px solid var(--black);
+  outline-offset: 4px;
+}
+
+
+/* Espaço onde o artigo aparecerá */
+
+.article {
+  width: min(90%, 900px);
+  margin: 0 auto 100px;
+  padding: 40px;
+
+  border: 1px solid var(--black);
+}
+
+.article h2 {
+  margin-top: 0;
+
+  font-size: clamp(34px, 5vw, 64px);
+  letter-spacing: -0.05em;
+  line-height: 1;
+}
+
+.article p {
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+
+/* Animação que usaremos depois */
+
+.logo-o.is-rolling {
+  animation: roll 500ms linear infinite;
+}
+
+@keyframes roll {
+  from {
+    transform: rotate(-8deg);
+  }
+
+  to {
+    transform: rotate(352deg);
+  }
+}
+
+
+/* Ajustes para celular */
+
+@media (max-width: 600px) {
+  .header {
+    height: 72px;
+    padding: 0 24px;
+  }
+
+  .hero {
+    min-height: calc(100vh - 72px);
+    padding: 60px 24px;
+  }
+
+  h1 {
+    font-size: clamp(62px, 21vw, 94px);
+  }
+
+  .description {
+    margin-top: 34px;
+    font-size: 17px;
+  }
+
+  .article {
+    width: calc(100% - 48px);
+    padding: 24px;
+  }
+}
