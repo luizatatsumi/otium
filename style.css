@@ -1,302 +1,58 @@
-@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700;800&family=Instrument+Sans:wght@400;500;600;700&display=swap");
-
-
-:root {
-  --ivory: #f3f0e7;
-  --black: #151512;
-  --electric: #f04422;
-  --line: rgba(21, 21, 18, 0.18);
-}
-
-
-/* Configurações gerais */
-
-* {
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  margin: 0;
-
-  background: var(--ivory);
-  color: var(--black);
-
-  font-family: "Instrument Sans", sans-serif;
-  -webkit-font-smoothing: antialiased;
-}
-
-button,
-a {
-  font: inherit;
-}
-
-
-/* Cabeçalho */
-
-.header {
-  min-height: 88px;
-  padding: 20px 5vw;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  border-bottom: 1px solid var(--line);
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-
-  color: var(--black);
-  text-decoration: none;
-
-  font-family: "Bricolage Grotesque", sans-serif;
-  font-size: 31px;
-  font-weight: 700;
-  letter-spacing: -2px;
-}
-
-.logo-o {
-  width: 27px;
-  height: 27px;
-  margin-right: 2px;
-
-  display: inline-block;
-
-  color: transparent;
-  border: 5px solid var(--black);
-
-  border-radius:
-    43% 57% 49% 51%
-    / 55% 42% 58% 45%;
-
-  transform: rotate(-8deg);
-}
-
-.header-note {
-  margin: 0;
-
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 1px;
-}
-
-
-/* Área principal */
+/* Corrige o espaço transparente da imagem */
 
 .hero {
-  min-height: calc(100vh - 88px);
-  padding: 7vh 5vw;
-
-  display: grid;
-  grid-template-columns:
-    minmax(360px, 0.8fr)
-    minmax(500px, 1.2fr);
-
+  min-height: auto;
+  padding: clamp(52px, 6vw, 84px) 5vw;
   align-items: center;
-  gap: clamp(30px, 5vw, 90px);
 }
-
-
-/* Conteúdo da esquerda */
-
-.hero-copy {
-  position: relative;
-  z-index: 2;
-}
-
-.eyebrow {
-  margin: 0 0 24px;
-
-  color: var(--electric);
-
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-}
-
-h1 {
-  max-width: 720px;
-  margin: 0;
-
-  font-family: "Bricolage Grotesque", sans-serif;
-  font-size: clamp(66px, 7vw, 118px);
-  font-weight: 700;
-  letter-spacing: -0.075em;
-  line-height: 0.86;
-}
-
-.description {
-  max-width: 500px;
-  margin: 34px 0 34px;
-
-  font-size: clamp(17px, 1.3vw, 20px);
-  line-height: 1.5;
-}
-
-
-/* Botão */
-
-#roll-button {
-  width: min(100%, 380px);
-  min-height: 68px;
-
-  padding: 0 28px;
-
-  border: 0;
-  border-radius: 999px;
-
-  background: var(--electric);
-  color: var(--ivory);
-
-  font-size: 16px;
-  font-weight: 700;
-  text-align: left;
-
-  cursor: pointer;
-
-  transition:
-    transform 180ms ease,
-    background 180ms ease;
-}
-
-#roll-button:hover {
-  background: #d93619;
-  transform: translateY(-3px);
-}
-
-#roll-button:focus-visible {
-  outline: 3px solid var(--black);
-  outline-offset: 4px;
-}
-
-
-/* Logo do cão */
 
 .hero-art {
+  position: relative;
   min-width: 0;
-  margin-left: -8%;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  margin: 0;
+  aspect-ratio: 1.45 / 1;
+  overflow: hidden;
 }
 
 .dog-logo {
-  width: 100%;
-  max-width: 850px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  width: 190%;
+  max-width: none;
   height: auto;
 
-  display: block;
-
-  mix-blend-mode: multiply;
+  transform: translate(-50%, -50%);
 }
-
-
-/* Artigo */
 
 .article {
-  width: min(90%, 900px);
-  margin: 0 auto 100px;
-  padding: clamp(28px, 5vw, 60px);
-
-  border: 1px solid var(--black);
+  scroll-margin-top: 24px;
 }
-
-.article h2 {
-  margin: 0 0 28px;
-
-  font-family: "Bricolage Grotesque", sans-serif;
-  font-size: clamp(38px, 5vw, 68px);
-  letter-spacing: -0.05em;
-  line-height: 1;
-}
-
-.article p {
-  font-size: 18px;
-  line-height: 1.75;
-}
-
-
-/* Giro do primeiro o */
-
-.logo-o.is-rolling {
-  animation: roll 500ms linear infinite;
-}
-
-@keyframes roll {
-  from {
-    transform: rotate(-8deg);
-  }
-
-  to {
-    transform: rotate(352deg);
-  }
-}
-
-
-/* Tablet */
 
 @media (max-width: 950px) {
-  .hero {
-    min-height: auto;
-
-    grid-template-columns: 1fr;
-
-    padding-top: 70px;
-  }
-
-  .hero-copy {
-    max-width: 760px;
-  }
-
   .hero-art {
-    margin: -30px -12vw 0 -7vw;
+    margin: 0;
+    aspect-ratio: 1.45 / 1;
   }
 
   .dog-logo {
-    max-width: 900px;
+    width: 190%;
+    max-width: none;
   }
 }
 
-
-/* Celular */
-
 @media (max-width: 600px) {
-  .header {
-    min-height: 72px;
-    padding: 18px 24px;
-  }
-
-  .header-note {
-    display: none;
-  }
-
   .hero {
-    padding: 52px 24px 70px;
-  }
-
-  h1 {
-    font-size: clamp(60px, 19vw, 86px);
-  }
-
-  .description {
-    margin-top: 30px;
-    font-size: 17px;
+    padding: 48px 24px 64px;
   }
 
   .hero-art {
-    margin: 10px -42vw 0 -18vw;
+    margin: 0;
+    aspect-ratio: 1.2 / 1;
   }
 
-  .article {
-    width: calc(100% - 48px);
-    padding: 24px;
+  .dog-logo {
+    width: 220%;
   }
 }
