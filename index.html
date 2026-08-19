@@ -375,7 +375,31 @@
           min-height: 220px;
           padding: 20px;
         }
-      }   </style>
+        /* Usa o símbolo verdadeiro da Otium como roleta */
+      .wheel {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        overflow: hidden;
+        background: transparent;
+        border-radius: 0;
+      }
+
+      .wheel::before {
+        display: none;
+      }
+
+      .wheel-image {
+        width: 180%;
+        max-width: none;
+        height: auto;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        mix-blend-mode: multiply;
+        pointer-events: none;
+      }    }   </style>
   </head>
 
   <body>
@@ -403,7 +427,7 @@
 
         <div class="wheel-area">
           <div class="wheel" id="wheel" aria-hidden="true">
-            <div class="wheel-mark"></div>
+            <img class="wheel-image" src="wheel-otium.png" alt="">
           </div>
         </div>
 
