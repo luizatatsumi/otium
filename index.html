@@ -2,68 +2,103 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>otium. — roll for a better brain.</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=3">
   </head>
 
   <body>
-    <header class="header">
-      <a class="logo" href="#">
-        <span class="logo-o">o</span>tium.
+    <header class="site-header">
+      <a class="logo" href="#" aria-label="otium home">
+        <span class="logo-o" aria-hidden="true"></span>tium.
       </a>
 
-      <p class="header-note">
-        a daily pause for curious minds
-      </p>
+      <p class="header-note">a daily pause for curious minds</p>
     </header>
 
     <main>
       <section class="hero">
         <div class="hero-copy">
-          <p class="eyebrow">
-            one roll. one read. your words.
-          </p>
+          <p class="eyebrow">one roll. five words. your story.</p>
 
-          <h1>
-            roll for a<br>
-            better brain.
-          </h1>
+          <h1>roll for a<br>better brain.</h1>
 
           <p class="description">
-            Discover one carefully selected article,
-            read it and explain what you learned out loud.
+            Five random words. One blank page.
+            Everything else is yours.
           </p>
 
-          <button id="roll-button" type="button">
-            roll an article
-          </button>
+          <p class="instructions">
+            Spin the wheel and write a short story using all five words.
+            No prompts. No AI. Just you.
+          </p>
         </div>
 
-        <div class="hero-art">
-          <img
-            class="dog-logo"
-            src="logo-otium.png"
-            alt="otium logo with a curious dog"
-          >
+        <div class="roulette-panel">
+          <div class="roulette" id="roulette">
+            <div class="roulette-ring" aria-hidden="true">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+
+            <button id="roll-button" type="button">
+              <span>roll</span>
+              <small>five words</small>
+            </button>
+          </div>
+
+          <p class="roulette-note">let chance start the sentence.</p>
         </div>
       </section>
 
-      <section
-        id="article"
-        class="article"
-        aria-live="polite"
-        hidden
-      ></section>
+      <section id="writing-challenge" class="writing-challenge" hidden>
+        <header class="challenge-header">
+          <div>
+            <p class="eyebrow">your five words</p>
+            <h2>now make them yours.</h2>
+          </div>
+
+          <button
+            id="roll-again-button"
+            class="secondary-button"
+            type="button"
+          >
+            roll again
+          </button>
+        </header>
+
+        <div class="word-list" aria-live="polite">
+          <span class="word-card" data-word></span>
+          <span class="word-card" data-word></span>
+          <span class="word-card" data-word></span>
+          <span class="word-card" data-word></span>
+          <span class="word-card" data-word></span>
+        </div>
+
+        <div class="writing-area">
+          <label for="story">your story</label>
+
+          <textarea
+            id="story"
+            placeholder="Start with the first thing that comes to mind..."
+          ></textarea>
+
+          <p id="word-progress" class="word-progress">
+            Use all five words in your story.
+          </p>
+        </div>
+      </section>
     </main>
 
-    <script src="articles.js"></script>
-    <script src="script.js"></script>
+    <footer class="site-footer">
+      <p>made for human minds.</p>
+    </footer>
+
+    <script src="script.js?v=3"></script>
   </body>
 </html>
