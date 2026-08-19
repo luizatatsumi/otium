@@ -1,27 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta
-      name="description"
-      content="Roll five words and write a story without AI. A small workout for human imagination."
-    >
 
-    <title>otium. — roll for a better brain.</title>
+    <title>otium. — roll your words.</title>
 
     <style>
-      @import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600;700&display=swap");
+      @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap");
 
       :root {
-        --ivory: #f3f0e7;
-        --paper: #fffaf1;
-        --ink: #151512;
-        --electric: #f04422;
-        --electric-dark: #d83618;
-        --line: rgba(21, 21, 18, 0.2);
-        --soft-line: rgba(243, 240, 231, 0.3);
-        --shadow: 0 24px 70px rgba(21, 21, 18, 0.12);
+        --ivory: #f5f1e9;
+        --paper: #fffdf8;
+        --ink: #171716;
+        --electric: #ff4b28;
+        --line: rgba(23, 23, 22, 0.16);
       }
 
       * {
@@ -35,12 +28,11 @@
       body {
         min-height: 100vh;
         margin: 0;
-        overflow-x: hidden;
         background:
-          radial-gradient(circle at 8% 12%, rgba(240, 68, 34, 0.05), transparent 28%),
+          radial-gradient(circle at 8% 16%, rgba(255, 75, 40, 0.06), transparent 25%),
           var(--ivory);
         color: var(--ink);
-        font-family: "Instrument Sans", sans-serif;
+        font-family: "Manrope", sans-serif;
         -webkit-font-smoothing: antialiased;
       }
 
@@ -49,21 +41,19 @@
         font: inherit;
       }
 
-      button,
-      a {
-        -webkit-tap-highlight-color: transparent;
+      button {
+        cursor: pointer;
       }
 
       button:focus-visible,
-      a:focus-visible,
       textarea:focus-visible {
         outline: 3px solid var(--electric);
         outline-offset: 4px;
       }
 
-      .site-header {
-        width: min(100% - 48px, 1440px);
-        min-height: 92px;
+      .header {
+        width: min(100% - 48px, 1280px);
+        min-height: 90px;
         margin: 0 auto;
         display: flex;
         align-items: center;
@@ -71,63 +61,40 @@
         border-bottom: 1px solid var(--line);
       }
 
-      .logo {
-        display: inline-flex;
-        align-items: center;
-        color: var(--ink);
-        font-family: "Bricolage Grotesque", sans-serif;
-        font-size: 34px;
-        font-weight: 700;
-        letter-spacing: -0.07em;
-        line-height: 1;
-        text-decoration: none;
-      }
-
-      .logo-o {
-        width: 30px;
-        height: 30px;
-        margin-right: 2px;
-        display: inline-block;
-        flex: 0 0 auto;
-        overflow: hidden;
-        border: 5px solid currentColor;
-        border-radius: 44% 56% 48% 52% / 58% 42% 58% 42%;
-        color: transparent;
-        font-size: 0;
-        transform: rotate(-9deg);
+      .brand-logo {
+        width: 160px;
+        height: 54px;
+        display: block;
+        object-fit: cover;
+        object-position: center 52%;
       }
 
       .header-note {
         margin: 0;
-        font-size: 12px;
-        font-weight: 700;
+        font-size: 11px;
+        font-weight: 800;
         letter-spacing: 0.12em;
-        text-transform: lowercase;
+        text-transform: uppercase;
       }
 
       main {
-        width: min(100% - 48px, 1440px);
+        width: min(100% - 48px, 960px);
         margin: 0 auto;
       }
 
       .hero {
-        min-height: calc(100vh - 92px);
-        padding: clamp(56px, 7vw, 110px) 0;
-        display: grid;
-        grid-template-columns: minmax(0, 0.9fr) minmax(460px, 1.1fr);
+        min-height: calc(100vh - 90px);
+        padding: clamp(60px, 8vw, 110px) 0 84px;
+        display: flex;
+        flex-direction: column;
         align-items: center;
-        gap: clamp(48px, 8vw, 140px);
-      }
-
-      .hero-copy {
-        position: relative;
-        z-index: 2;
+        text-align: center;
       }
 
       .eyebrow {
-        margin: 0 0 24px;
+        margin: 0 0 18px;
         color: var(--electric);
-        font-size: 12px;
+        font-size: 11px;
         font-weight: 800;
         letter-spacing: 0.18em;
         text-transform: uppercase;
@@ -136,392 +103,147 @@
       h1,
       h2 {
         margin: 0;
-        font-family: "Bricolage Grotesque", sans-serif;
-        font-weight: 700;
         letter-spacing: -0.075em;
       }
 
       h1 {
-        max-width: 760px;
-        font-size: clamp(72px, 7.6vw, 132px);
-        line-height: 0.84;
-      }
-
-      .description {
-        max-width: 580px;
-        margin: 38px 0 0;
-        font-family: "Bricolage Grotesque", sans-serif;
-        font-size: clamp(24px, 2.2vw, 36px);
-        font-weight: 500;
-        letter-spacing: -0.035em;
-        line-height: 1.12;
-      }
-
-      .instructions {
-        max-width: 560px;
-        margin: 22px 0 0;
-        font-size: 17px;
-        line-height: 1.6;
-      }
-
-      .roulette-panel {
-        min-width: 0;
-        padding: clamp(24px, 3vw, 42px);
-        border-radius: 44px;
-        background: var(--ink);
-        color: var(--ivory);
-        box-shadow: var(--shadow);
-      }
-
-      .roulette {
-        position: relative;
-        width: min(100%, 620px);
-        aspect-ratio: 1;
-        margin: 0 auto;
-        display: grid;
-        place-items: center;
-        isolation: isolate;
-      }
-
-      .roulette::before,
-      .roulette::after {
-        content: "";
-        position: absolute;
-        border-radius: 50%;
-        pointer-events: none;
-      }
-
-      .roulette::before {
-        inset: 2%;
-        z-index: -3;
-        background:
-          repeating-conic-gradient(
-            from -18deg,
-            var(--electric) 0deg 1.4deg,
-            transparent 1.4deg 72deg
-          );
-        border: 1px solid var(--soft-line);
-      }
-
-      .roulette::after {
-        inset: 14%;
-        z-index: -2;
-        border: 1px solid var(--soft-line);
-        background: rgba(243, 240, 231, 0.035);
-      }
-
-      .roulette-ring {
-        position: absolute;
-        inset: 0;
-        border-radius: 50%;
-        pointer-events: none;
-        will-change: transform;
-      }
-
-      .wheel-word {
-        position: absolute;
-        min-width: 104px;
-        max-width: 145px;
-        padding: 10px 14px;
-        overflow: hidden;
-        border: 1px solid rgba(243, 240, 231, 0.55);
-        border-radius: 999px;
-        background: var(--ink);
-        color: var(--ivory);
-        font-family: "Bricolage Grotesque", sans-serif;
-        font-size: clamp(12px, 1.1vw, 16px);
-        font-weight: 600;
-        line-height: 1;
-        text-align: center;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-      }
-
-      .wheel-word:nth-child(1) {
-        top: 7%;
-        left: 50%;
-        transform: translateX(-50%);
-      }
-
-      .wheel-word:nth-child(2) {
-        top: 31%;
-        right: 2%;
-      }
-
-      .wheel-word:nth-child(3) {
-        right: 15%;
-        bottom: 8%;
-      }
-
-      .wheel-word:nth-child(4) {
-        bottom: 8%;
-        left: 15%;
-      }
-
-      .wheel-word:nth-child(5) {
-        top: 31%;
-        left: 2%;
-      }
-
-      #roll-button {
-        position: relative;
-        z-index: 2;
-        width: 34%;
-        aspect-ratio: 1;
-        padding: 18px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        border: 0;
-        border-radius: 50%;
-        background: var(--electric);
-        color: var(--ivory);
-        cursor: pointer;
-        box-shadow: 0 0 0 10px var(--ink), 0 0 0 11px var(--soft-line);
-        transition: transform 180ms ease, background 180ms ease;
-      }
-
-      #roll-button:hover {
-        background: var(--electric-dark);
-        transform: scale(1.035) rotate(2deg);
-      }
-
-      #roll-button:active {
-        transform: scale(0.98);
-      }
-
-      #roll-button:disabled {
-        cursor: wait;
-      }
-
-      .roll-main {
-        font-family: "Bricolage Grotesque", sans-serif;
-        font-size: clamp(26px, 3.3vw, 52px);
+        max-width: 800px;
+        font-size: clamp(54px, 8vw, 104px);
         font-weight: 800;
-        letter-spacing: -0.06em;
         line-height: 0.9;
       }
 
-      .roll-sub {
-        margin-top: 8px;
-        font-size: clamp(9px, 0.9vw, 12px);
+      .intro {
+        max-width: 560px;
+        margin: 26px auto 0;
+        font-size: clamp(18px, 2vw, 24px);
+        font-weight: 500;
+        letter-spacing: -0.035em;
+        line-height: 1.35;
+      }
+
+      .arrow {
+        width: 0;
+        height: 0;
+        margin: clamp(42px, 6vw, 70px) 0 14px;
+        border-top: 15px solid var(--electric);
+        border-right: 10px solid transparent;
+        border-left: 10px solid transparent;
+      }
+
+      .wheel-area {
+        position: relative;
+        width: min(76vw, 430px);
+        aspect-ratio: 1;
+        display: grid;
+        place-items: center;
+      }
+
+      .wheel {
+        width: 88%;
+        aspect-ratio: 1;
+        display: grid;
+        place-items: center;
+        border: clamp(20px, 4vw, 34px) solid var(--ink);
+        border-radius: 46% 54% 49% 51% / 55% 44% 56% 45%;
+        transform: rotate(-10deg);
+        transition: transform 900ms cubic-bezier(0.16, 0.75, 0.18, 1);
+      }
+
+      .wheel.is-spinning {
+        transform: rotate(710deg);
+      }
+
+      .wheel-mark {
+        width: 32%;
+        aspect-ratio: 1;
+        border: clamp(7px, 1.4vw, 12px) solid var(--ink);
+        border-radius: 43% 57% 49% 51% / 55% 42% 58% 45%;
+        transform: rotate(-8deg);
+      }
+
+      .spin-button {
+        width: min(100%, 300px);
+        min-height: 64px;
+        margin-top: 36px;
+        padding: 0 28px;
+        border: 0;
+        border-radius: 999px;
+        background: var(--ink);
+        color: var(--ivory);
+        font-size: 16px;
         font-weight: 800;
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
+        letter-spacing: -0.02em;
+        transition: background 160ms ease, transform 160ms ease;
       }
 
-      .roulette-note {
-        margin: 20px 0 0;
-        color: rgba(243, 240, 231, 0.65);
+      .spin-button:hover {
+        background: var(--electric);
+        transform: translateY(-3px);
+      }
+
+      .spin-button:disabled {
+        cursor: wait;
+        opacity: 0.75;
+      }
+
+      .microcopy {
+        margin: 16px 0 0;
+        color: rgba(23, 23, 22, 0.58);
         font-size: 12px;
-        font-weight: 700;
-        letter-spacing: 0.12em;
-        text-align: center;
-        text-transform: uppercase;
+        font-weight: 600;
       }
 
-      .roulette.is-spinning .roulette-ring {
-        animation: wheel-spin 900ms cubic-bezier(0.16, 0.72, 0.2, 1);
-      }
-
-      .roulette.is-spinning #roll-button {
-        animation: button-pulse 450ms ease-in-out infinite alternate;
-      }
-
-      @keyframes wheel-spin {
-        0% {
-          transform: rotate(0deg);
-        }
-
-        72% {
-          transform: rotate(760deg);
-        }
-
-        100% {
-          transform: rotate(720deg);
-        }
-      }
-
-      @keyframes button-pulse {
-        from {
-          transform: scale(0.98);
-        }
-
-        to {
-          transform: scale(1.04);
-        }
-      }
-
-      .writing-challenge[hidden] {
+      .challenge[hidden] {
         display: none;
       }
 
-      .writing-challenge {
-        margin: 30px 0 110px;
-        padding: clamp(28px, 5vw, 76px);
-        border: 2px solid var(--ink);
-        border-radius: 38px;
-        background: var(--paper);
-        box-shadow: var(--shadow);
-        scroll-margin-top: 24px;
-      }
-
-      .challenge-header {
-        display: flex;
-        align-items: flex-end;
-        justify-content: space-between;
-        gap: 30px;
-      }
-
-      .challenge-header .eyebrow {
-        margin-bottom: 14px;
-      }
-
-      h2 {
-        font-size: clamp(54px, 6vw, 96px);
-        line-height: 0.9;
-      }
-
-      .button-row {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-      }
-
-      .secondary-button {
-        min-height: 52px;
-        padding: 0 22px;
+      .challenge {
+        margin: 0 0 100px;
+        padding: clamp(30px, 6vw, 68px);
         border: 1px solid var(--ink);
-        border-radius: 999px;
-        background: transparent;
-        color: var(--ink);
+        border-radius: 34px;
+        background: var(--paper);
+        scroll-margin-top: 30px;
+      }
+
+      .challenge h2 {
+        max-width: 760px;
+        margin-top: 10px;
+        font-size: clamp(42px, 6vw, 78px);
+        font-weight: 800;
+        line-height: 0.95;
+      }
+
+      .write-label {
+        display: block;
+        margin: 42px 0 14px;
         font-size: 13px;
         font-weight: 800;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        cursor: pointer;
-        transition: background 160ms ease, color 160ms ease, transform 160ms ease;
-      }
-
-      .secondary-button:hover {
-        background: var(--ink);
-        color: var(--ivory);
-        transform: translateY(-2px);
-      }
-
-      .word-list {
-        margin-top: clamp(36px, 5vw, 68px);
-        display: grid;
-        grid-template-columns: repeat(5, minmax(0, 1fr));
-        gap: 12px;
-      }
-
-      .word-card {
-        min-width: 0;
-        min-height: 132px;
-        padding: 18px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        border: 1px solid var(--ink);
-        border-radius: 20px;
-        background: var(--ivory);
-        transition: background 180ms ease, color 180ms ease, transform 180ms ease;
-      }
-
-      .word-card small {
-        font-size: 9px;
-        font-weight: 800;
-        letter-spacing: 0.15em;
+        letter-spacing: 0.1em;
         text-transform: uppercase;
       }
 
-      .word-card strong {
-        overflow-wrap: anywhere;
-        font-family: "Bricolage Grotesque", sans-serif;
-        font-size: clamp(22px, 2.1vw, 34px);
-        font-weight: 700;
-        letter-spacing: -0.05em;
-        line-height: 1;
-      }
-
-      .word-card.is-used {
-        background: var(--electric);
-        color: var(--ivory);
-        transform: translateY(-5px) rotate(-1deg);
-      }
-
-      .writing-area {
-        margin-top: 18px;
-        padding: clamp(24px, 4vw, 50px);
-        border-radius: 26px;
-        background: var(--ink);
-        color: var(--ivory);
-      }
-
-      .writing-toolbar {
-        margin-bottom: 20px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 20px;
-      }
-
-      .writing-area label {
-        font-family: "Bricolage Grotesque", sans-serif;
-        font-size: 18px;
-        font-weight: 700;
-        letter-spacing: -0.02em;
-      }
-
-      .word-progress {
-        margin: 0;
-        color: rgba(243, 240, 231, 0.62);
-        font-size: 12px;
-        font-weight: 700;
-        letter-spacing: 0.08em;
-        text-align: right;
-        text-transform: uppercase;
-      }
-
-      .word-progress.is-complete {
-        color: var(--electric);
-      }
-
-      #story {
+      #writing-space {
         width: 100%;
-        min-height: 330px;
-        padding: 26px 0 10px;
+        min-height: 300px;
+        padding: 24px;
         resize: vertical;
-        border: 0;
-        border-top: 1px solid var(--soft-line);
-        border-radius: 0;
+        border: 1px solid var(--ink);
+        border-radius: 18px;
         background: transparent;
-        color: var(--ivory);
-        font-family: "Bricolage Grotesque", sans-serif;
-        font-size: clamp(22px, 2.3vw, 34px);
-        line-height: 1.48;
+        color: var(--ink);
+        font-size: clamp(18px, 2vw, 23px);
+        line-height: 1.55;
       }
 
-      #story::placeholder {
-        color: rgba(243, 240, 231, 0.35);
+      #writing-space::placeholder {
+        color: rgba(23, 23, 22, 0.42);
       }
 
-      #story:focus {
-        outline: 0;
-      }
-
-      .save-note {
-        margin: 16px 0 0;
-        color: rgba(243, 240, 231, 0.42);
-        font-size: 11px;
-        letter-spacing: 0.06em;
-      }
-
-      .site-footer {
-        width: min(100% - 48px, 1440px);
-        min-height: 100px;
+      .footer {
+        width: min(100% - 48px, 1280px);
+        min-height: 88px;
         margin: 0 auto;
         display: flex;
         align-items: center;
@@ -529,308 +251,183 @@
         border-top: 1px solid var(--line);
       }
 
-      .site-footer p {
+      .footer p {
         margin: 0;
-        font-size: 12px;
+        font-size: 11px;
         font-weight: 800;
-        letter-spacing: 0.12em;
+        letter-spacing: 0.1em;
         text-transform: uppercase;
       }
 
-      .footer-mark {
+      .footer p:last-child {
         color: var(--electric);
       }
 
-      .sr-only {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        padding: 0;
-        margin: -1px;
-        overflow: hidden;
-        clip: rect(0, 0, 0, 0);
-        white-space: nowrap;
-        border: 0;
-      }
-
-      @media (max-width: 1050px) {
-        .hero {
-          min-height: auto;
-          grid-template-columns: 1fr;
-        }
-
-        .hero-copy {
-          max-width: 820px;
-        }
-
-        .roulette-panel {
-          max-width: 760px;
-          width: 100%;
-          margin: 0 auto;
-        }
-
-        .word-list {
-          grid-template-columns: repeat(3, minmax(0, 1fr));
-        }
-      }
-
-      @media (max-width: 720px) {
-        .site-header,
+      @media (max-width: 600px) {
+        .header,
         main,
-        .site-footer {
-          width: min(100% - 32px, 1440px);
+        .footer {
+          width: min(100% - 32px, 1280px);
         }
 
-        .site-header {
+        .header {
           min-height: 74px;
+        }
+
+        .brand-logo {
+          width: 132px;
+          height: 46px;
         }
 
         .header-note {
           display: none;
         }
 
-        .logo {
-          font-size: 30px;
-        }
-
-        .logo-o {
-          width: 26px;
-          height: 26px;
-          border-width: 4px;
-        }
-
         .hero {
-          padding: 52px 0 72px;
-          gap: 44px;
+          min-height: auto;
+          padding: 62px 0 70px;
         }
 
         h1 {
-          font-size: clamp(62px, 19vw, 92px);
+          font-size: clamp(50px, 14vw, 72px);
         }
 
-        .description {
-          margin-top: 30px;
-          font-size: 25px;
+        .intro {
+          font-size: 18px;
         }
 
-        .instructions {
-          font-size: 16px;
+        .wheel-area {
+          width: min(82vw, 390px);
         }
 
-        .roulette-panel {
-          padding: 16px;
-          border-radius: 28px;
+        .challenge {
+          margin-bottom: 64px;
+          padding: 28px 20px;
+          border-radius: 24px;
         }
 
-        .wheel-word {
-          min-width: 76px;
-          max-width: 100px;
-          padding: 8px 9px;
-          font-size: 11px;
-        }
-
-        #roll-button {
-          width: 37%;
-          box-shadow: 0 0 0 7px var(--ink), 0 0 0 8px var(--soft-line);
-        }
-
-        .roulette-note {
-          margin: 14px 0 4px;
-          font-size: 10px;
-        }
-
-        .writing-challenge {
-          margin-bottom: 72px;
-          padding: 24px 16px 16px;
-          border-radius: 26px;
-        }
-
-        .challenge-header {
-          align-items: flex-start;
-          flex-direction: column;
-        }
-
-        h2 {
-          font-size: clamp(52px, 14vw, 76px);
-        }
-
-        .word-list {
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-        }
-
-        .word-card {
-          min-height: 112px;
-        }
-
-        .word-card:last-child {
-          grid-column: 1 / -1;
-        }
-
-        .writing-area {
-          padding: 24px 18px;
-          border-radius: 20px;
-        }
-
-        .writing-toolbar {
-          align-items: flex-start;
-          flex-direction: column;
-          gap: 8px;
-        }
-
-        .word-progress {
-          text-align: left;
-        }
-
-        #story {
-          min-height: 280px;
-          font-size: 21px;
-        }
-
-        .site-footer {
-          min-height: 84px;
-        }
-      }
-
-      @media (prefers-reduced-motion: reduce) {
-        html {
-          scroll-behavior: auto;
-        }
-
-        *,
-        *::before,
-        *::after {
-          animation-duration: 0.01ms !important;
-          animation-iteration-count: 1 !important;
-          transition-duration: 0.01ms !important;
+        #writing-space {
+          min-height: 250px;
+          padding: 18px;
+          font-size: 18px;
         }
       }
     </style>
   </head>
 
   <body>
-    <header class="site-header">
-      <a class="logo" href="#" aria-label="otium home">
-        <span class="logo-o" aria-hidden="true">o</span>tium.
-      </a>
+    <header class="header">
+      <img
+        class="brand-logo"
+        src="logo-otium.png"
+        alt="otium."
+      >
 
-      <p class="header-note">a daily pause for curious minds</p>
+      <p class="header-note">roll for a better brain.</p>
     </header>
 
     <main>
-      <section class="hero" aria-labelledby="hero-title">
-        <div class="hero-copy">
-          <p class="eyebrow">one roll. five words. your story.</p>
+      <section class="hero">
+        <p class="eyebrow">roll your words.</p>
 
-          <h1 id="hero-title">roll for a<br>better brain.</h1>
+        <h1>gire para sortear<br>um tema.</h1>
 
-          <p class="description">
-            Five random words. One blank page. Everything else is yours.
-          </p>
+        <p class="intro">
+          Um tema. Uma página em branco. Suas palavras.
+        </p>
 
-          <p class="instructions">
-            Spin the wheel and write a short story using all five words.
-            No prompts. No AI. Just you.
-          </p>
-        </div>
+        <div class="arrow" aria-hidden="true"></div>
 
-        <div class="roulette-panel">
-          <div class="roulette" id="roulette">
-            <div class="roulette-ring" aria-hidden="true">
-              <span class="wheel-word" data-wheel-word>character</span>
-              <span class="wheel-word" data-wheel-word>action</span>
-              <span class="wheel-word" data-wheel-word>object</span>
-              <span class="wheel-word" data-wheel-word>place</span>
-              <span class="wheel-word" data-wheel-word>twist</span>
-            </div>
-
-            <button id="roll-button" type="button" aria-describedby="roulette-help">
-              <span class="roll-main" data-roll-main>roll</span>
-              <span class="roll-sub">five words</span>
-            </button>
+        <div class="wheel-area">
+          <div class="wheel" id="wheel" aria-hidden="true">
+            <div class="wheel-mark"></div>
           </div>
-
-          <p class="roulette-note" id="roulette-help">
-            let chance start the sentence.
-          </p>
-
-          <p class="sr-only" id="roulette-status" aria-live="polite"></p>
         </div>
+
+        <button class="spin-button" id="spin-button" type="button">
+          girar
+        </button>
+
+        <p class="microcopy">pesquise se quiser. escreva sem IA.</p>
       </section>
 
-      <section id="writing-challenge" class="writing-challenge" hidden>
-        <header class="challenge-header">
-          <div>
-            <p class="eyebrow">your five words</p>
-            <h2>now make them yours.</h2>
-          </div>
+      <section class="challenge" id="challenge" hidden>
+        <p class="eyebrow">tema sorteado</p>
 
-          <div class="button-row">
-            <button id="clear-button" class="secondary-button" type="button">
-              clear story
-            </button>
+        <h2 id="topic"></h2>
 
-            <button id="roll-again-button" class="secondary-button" type="button">
-              roll again
-            </button>
-          </div>
-        </header>
+        <label class="write-label" for="writing-space">
+          suas palavras
+        </label>
 
-        <div class="word-list" aria-label="Your five words">
-          <article class="word-card" data-word-card>
-            <small data-category></small>
-            <strong data-word></strong>
-          </article>
-
-          <article class="word-card" data-word-card>
-            <small data-category></small>
-            <strong data-word></strong>
-          </article>
-
-          <article class="word-card" data-word-card>
-            <small data-category></small>
-            <strong data-word></strong>
-          </article>
-
-          <article class="word-card" data-word-card>
-            <small data-category></small>
-            <strong data-word></strong>
-          </article>
-
-          <article class="word-card" data-word-card>
-            <small data-category></small>
-            <strong data-word></strong>
-          </article>
-        </div>
-
-        <div class="writing-area">
-          <div class="writing-toolbar">
-            <label for="story">your story</label>
-
-            <p id="word-progress" class="word-progress">
-              0 of 5 words used
-            </p>
-          </div>
-
-          <textarea
-            id="story"
-            spellcheck="true"
-            placeholder="Start with the first thing that comes to mind..."
-          ></textarea>
-
-          <p class="save-note">Your draft is saved only in this browser.</p>
-        </div>
+        <textarea
+          id="writing-space"
+          placeholder="Comece de onde conseguir."
+        ></textarea>
       </section>
     </main>
 
-    <footer class="site-footer">
+    <footer class="footer">
       <p>made for human minds.</p>
-      <p class="footer-mark">otium.</p>
+      <p>otium.</p>
     </footer>
 
-    <noscript>
-      This writing exercise needs JavaScript enabled to roll the words.
-    </noscript>
+    <script>
+      /*
+        Estes são temas temporários só para testar o giro.
+        Depois vamos trocar esta lista por 100–200 temas.
+      */
+      const topics = [
+        "Escreva sobre uma coisa que você sempre quis dizer e nunca disse.",
+        "O que significa ter sucesso para você?",
+        "Escreva sobre um lugar que ainda quer conhecer.",
+        "Qual opinião sua mudou completamente com o tempo?",
+        "O que o mundo deveria levar mais a sério?",
+        "Escreva sobre uma memória que você nunca quer perder."
+      ];
 
-    <script src="script.js?v=5" defer></script>
+      const button = document.querySelector("#spin-button");
+      const wheel = document.querySelector("#wheel");
+      const challenge = document.querySelector("#challenge");
+      const topic = document.querySelector("#topic");
+      const writingSpace = document.querySelector("#writing-space");
+
+      let previousTopic = "";
+
+      button.addEventListener("click", () => {
+        button.disabled = true;
+        button.textContent = "girando...";
+        wheel.classList.remove("is-spinning");
+
+        void wheel.offsetWidth;
+        wheel.classList.add("is-spinning");
+
+        window.setTimeout(() => {
+          const availableTopics = topics.filter(
+            (item) => item !== previousTopic
+          );
+
+          const selectedTopic =
+            availableTopics[
+              Math.floor(Math.random() * availableTopics.length)
+            ];
+
+          previousTopic = selectedTopic;
+          topic.textContent = selectedTopic;
+
+          challenge.hidden = false;
+
+          challenge.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+          });
+
+          button.disabled = false;
+          button.textContent = "girar outro tema";
+
+          window.setTimeout(() => writingSpace.focus(), 500);
+        }, 900);
+      });
+    </script>
   </body>
 </html>
