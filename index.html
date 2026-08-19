@@ -140,27 +140,32 @@
       }
 
       .wheel {
-        width: 88%;
-        aspect-ratio: 1;
-        display: grid;
-        place-items: center;
-        border: clamp(20px, 4vw, 34px) solid var(--ink);
-        border-radius: 46% 54% 49% 51% / 55% 44% 56% 45%;
-        transform: rotate(-10deg);
-        transition: transform 900ms cubic-bezier(0.16, 0.75, 0.18, 1);
-      }
+  width: min(520px, 78vw);
+  aspect-ratio: 1;
+  position: relative;
+  margin: 28px auto 0;
+  cursor: pointer;
+  background: #151512;
+  border-radius: 48% 52% 46% 54% / 55% 45% 55% 45%;
+  transform: rotate(-8deg);
+  transition: transform 1.25s cubic-bezier(.18,.88,.2,1);
+}
 
-      .wheel.is-spinning {
-        transform: rotate(710deg);
-      }
+.wheel::before {
+  content: "";
+  position: absolute;
+  inset: 13%;
+  background: #fffaf1;
+  border-radius: 53% 47% 55% 45% / 45% 54% 46% 55%;
+}
 
-      .wheel-mark {
-        width: 32%;
-        aspect-ratio: 1;
-        border: clamp(7px, 1.4vw, 12px) solid var(--ink);
-        border-radius: 43% 57% 49% 51% / 55% 42% 58% 45%;
-        transform: rotate(-8deg);
-      }
+.wheel.is-spinning {
+  transform: rotate(720deg);
+}
+
+.wheel-mark {
+  display: none;
+}
 
       .spin-button {
         width: min(100%, 300px);
@@ -330,10 +335,10 @@
       <section class="hero">
         <p class="eyebrow">roll your words.</p>
 
-        <h1>gire para sortear<br>um tema.</h1>
+        <h1>roll to get<br>a topic.</h1>
 
         <p class="intro">
-          Um tema. Uma página em branco. Suas palavras.
+          One topic. One blank page. Your words.
         </p>
 
         <div class="arrow" aria-hidden="true"></div>
@@ -348,7 +353,7 @@
           girar
         </button>
 
-        <p class="microcopy">pesquise se quiser. escreva sem IA.</p>
+        <p class="microcopy">Research if you want. Write without AI.</p>
       </section>
 
       <section class="challenge" id="challenge" hidden>
