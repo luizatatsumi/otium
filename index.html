@@ -399,7 +399,31 @@
         transform: translate(-50%, -50%);
         mix-blend-mode: multiply;
         pointer-events: none;
-      }    }   </style>
+  /* Corrige a roleta no desktop e usa apenas o arquivo original */
+.wheel {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  margin: 0;
+  overflow: hidden;
+  background: transparent;
+  border-radius: 0;
+}
+
+.wheel::before {
+  content: none;
+  display: none;
+}
+
+.wheel-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: static;
+  transform: none;
+  pointer-events: none;
+}    }    }   </style>
   </head>
 
   <body>
