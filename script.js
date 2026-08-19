@@ -1,5 +1,7 @@
 "use strict";
 
+document.documentElement.dataset.otiumJs = "loaded";
+
 const wordBanks = [
   {
     category: "character",
@@ -260,6 +262,7 @@ function restoreSession() {
   }
 }
 
+rollButton.dataset.bound = "true";
 rollButton.addEventListener("click", rollWords);
 rollAgainButton.addEventListener("click", rollWords);
 clearButton.addEventListener("click", clearStory);
