@@ -382,7 +382,7 @@
         Estes são temas temporários só para testar o giro.
         Depois vamos trocar esta lista por 100–200 temas.
       */
-      const topics = [
+      let topics
         "Escreva sobre uma coisa que você sempre quis dizer e nunca disse.",
         "O que significa ter sucesso para você?",
         "Escreva sobre um lugar que ainda quer conhecer.",
@@ -390,7 +390,29 @@
         "O que o mundo deveria levar mais a sério?",
         "Escreva sobre uma memória que você nunca quer perder."
       ];
+fetch("topics.csv")
+  .then((response) => response.text())
+  .then((csv) => {
+    const loadedTopics = csv
+      .trim()
+      .split(/\r?\n/)
+      .slice(1)
+      .map((line) => {
+        const match = line.match(/^\d+,[^,]+,"(.*)"$/);
 
+        return match
+          ? match[1].replace(/""/g, '"')
+          : "";
+      })
+      .filter(Boolean);
+
+    if (loadedTopics.length) {
+      topics = loadedTopics;
+    }
+  })
+  .catch((error) => {
+    console.error("Não foi possível carregar topics.csv:", error);
+  });
       const button = document.querySelector("#spin-button");
       const wheel = document.querySelector("#wheel");
       const challenge = document.querySelector("#challenge");
