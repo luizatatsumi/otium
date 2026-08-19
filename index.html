@@ -317,7 +317,65 @@
           font-size: 18px;
         }
       }
-    </style>
+       /* Área de escrita: visual editorial */
+      .challenge {
+        width: min(100%, 760px);
+        margin: 0 auto 100px;
+        padding: 70px 0 40px;
+        border: 0;
+        border-radius: 0;
+        background: transparent;
+      }
+
+      .challenge .eyebrow {
+        margin-bottom: 22px;
+      }
+
+      .challenge h2 {
+        max-width: 720px;
+        margin: 0;
+        font-size: clamp(38px, 5vw, 60px);
+        font-weight: 700;
+        line-height: 1.05;
+        letter-spacing: -0.055em;
+      }
+
+      .write-label {
+        margin: 54px 0 12px;
+        font-size: 11px;
+        letter-spacing: 0.16em;
+      }
+
+      #writing-space {
+        min-height: 260px;
+        padding: 26px;
+        border: 1px solid rgba(23, 23, 22, 0.22);
+        border-radius: 12px;
+        background: var(--paper);
+        font-size: 19px;
+        line-height: 1.65;
+        transition: border-color 160ms ease;
+      }
+
+      #writing-space:focus-visible {
+        outline: none;
+        border-color: var(--electric);
+      }
+
+      @media (max-width: 600px) {
+        .challenge {
+          padding: 48px 0 24px;
+        }
+
+        .challenge h2 {
+          font-size: clamp(34px, 10vw, 48px);
+        }
+
+        #writing-space {
+          min-height: 220px;
+          padding: 20px;
+        }
+      }   </style>
   </head>
 
   <body>
