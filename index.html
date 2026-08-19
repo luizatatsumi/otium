@@ -1,45 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">.wheel {
-  width: min(520px, 78vw);
-  aspect-ratio: 1;
-  display: grid;
-  place-items: center;
-  position: relative;
-  margin: 28px auto 0;
-  padding: 0;
-  border: 0;
-  background: transparent;
-  cursor: pointer;
-  transition: transform 1.25s cubic-bezier(.18,.88,.2,1);
-}
-
-.wheel img {
-  width: 165%;
-  max-width: none;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  mix-blend-mode: multiply;
-  pointer-events: none;
-}
-
-.wheel-text {
-  position: relative;
-  z-index: 1;
-  color: #fffaf1;
-  font: 800 1.1rem/1 "Manrope", sans-serif;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-}
-
-<div class="wheel" id="wheel" aria-hidden="true">
-  <img src="wheel-otium.png" alt="">
-</div>
-
-.wheel-mark {
-  display: none;
-}
+<html lang="pt-BR">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -390,7 +350,7 @@
         </div>
 
         <button class="spin-button" id="spin-button" type="button">
-          roll
+          girar
         </button>
 
         <p class="microcopy">Research if you want. Write without AI.</p>
